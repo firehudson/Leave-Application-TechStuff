@@ -1,23 +1,31 @@
 import * as React from "react";
 import Table from "@mui/joy/Table";
-import data from "./data.json";
-import Typography from "@mui/joy/Typography";
 import Tooltip from "@mui/joy/Tooltip";
+import Typography from "@mui/joy/Typography";
 import Box from "@mui/joy/Box";
-import AdjustIcon from "@mui/icons-material/Adjust";
-import Chip from "@mui/joy/Chip";
-import { CssVarsProvider, extendTheme } from "@mui/joy/styles";
 import IconButton from "@mui/joy/IconButton";
 import Menu from "@mui/joy/Menu";
 import MenuItem from "@mui/joy/MenuItem";
+import Chip from "@mui/joy/Chip";
 import MoreVert from "@mui/icons-material/MoreVert";
+import AdjustIcon from "@mui/icons-material/Adjust";
+import { CssVarsProvider, extendTheme } from "@mui/joy/styles";
+import data from "./data.json";
 
 const customTheme = extendTheme({
   fontFamily: "sans-serif,roboto",
   fontSize: 14,
   shadows: ["none"],
 });
-
+function showReason(reasonEmp) {
+  let reason = "";
+  if (reasonEmp.length > 19) {
+    reason = reasonEmp.slice(0, 20) + "...";
+  } else {
+    reason = reasonEmp;
+  }
+  return reason;
+}
 function LeaveApp() {
   const [empData, setEmpData] = React.useState(data);
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -37,12 +45,11 @@ function LeaveApp() {
     setAnchorEl(event.currentTarget);
   };
 
-  // const handleCloseMenu= () => {
-  //   setAnchorEl(null);
-  // };
-
   const handleApprove = () => {
-    reject.variant = "plain";
+    setReject((prevState) => ({
+      ...prevState,
+      ["variant"]: "plain",
+    }));
     if (approve.variant === "plain") {
       setApprove((prevState) => ({
         ...prevState,
@@ -51,7 +58,6 @@ function LeaveApp() {
       }));
     } else {
       handleStatusChange("Approved");
-
       setApprove((prevState) => ({
         ...prevState,
         ["text"]: "Approve",
@@ -68,13 +74,22 @@ function LeaveApp() {
         else element.Color = "danger";
       }
     });
-    approve.text = "Approve";
-    approve.variant = "plain";
-    reject.text = "Reject";
-    reject.variant = "plain";
+    setApprove((prevState) => ({
+      ...prevState,
+      ["text"]: "Approve",
+      ["variant"]: "plain",
+    }));
+    setReject((prevState) => ({
+      ...prevState,
+      ["text"]: "Approve",
+      ["variant"]: "plain",
+    }));
   };
   const handleReject = () => {
-    approve.variant = "plain";
+    setApprove((prevState) => ({
+      ...prevState,
+      ["variant"]: "plain",
+    }));
     if (reject.variant === "plain") {
       setReject((prevState) => ({
         ...prevState,
@@ -118,45 +133,43 @@ function LeaveApp() {
               <td>{employee.LeaveType}</td>
               <td>{employee.Department}</td>
               <td>
-                <Tooltip
-                  placement="bottom-end"
-                  variant="outlined"
-                  title={
-                    <Box
-                      sx={{
-                        display: "flex",
-                        flexDirection: "column",
-                        maxWidth: 200,
-                        justifyContent: "center",
-                        p: 1,
-                      }}
-                    >
+                <div>
+                  <Tooltip
+                    placement="bottom-end"
+                    variant="outlined"
+                    title={
                       <Box
                         sx={{
                           display: "flex",
-                          gap: 1,
-                          width: "100%",
-                          mt: 1,
+                          flexDirection: "column",
+                          maxWidth: 200,
+                          justifyContent: "center",
+                          p: 1,
                         }}
                       >
-                        <AdjustIcon color="success" />
-                        <Box>
-                          <Typography fontSize="sm" sx={{ mb: 1 }}>
-                            {employee.Reason}
-                          </Typography>
+                        <Box
+                          sx={{
+                            display: "flex",
+                            gap: 1,
+                            width: "100%",
+                            mt: 1,
+                          }}
+                        >
+                          <AdjustIcon color="success" />
+                          <Box>
+                            <Typography fontSize="sm" sx={{ mb: 1 }}>
+                              {employee.Reason}
+                            </Typography>
+                          </Box>
                         </Box>
                       </Box>
-                    </Box>
-                  }
-                >
-                  <Typography startDecorator={<AdjustIcon color="success" />}>
-                    {employee.Reason.length > 19 ? (
-                      <p>{employee.Reason.slice(0, 20) + "..."}</p>
-                    ) : (
-                      <p>{employee.Reason}</p>
-                    )}
-                  </Typography>
-                </Tooltip>
+                    }
+                  >
+                    <Typography startDecorator={<AdjustIcon color="success" />}>
+                      <span>{showReason(employee.Reason)}</span>
+                    </Typography>
+                  </Tooltip>
+                </div>
               </td>
               <td align="center">{employee.RequestedOn}</td>
               <td>
@@ -181,7 +194,6 @@ function LeaveApp() {
                     id="positioned-demo-menu"
                     anchorEl={anchorEl}
                     open={open}
-                    // onClose={handleCloseMenu}
                     aria-labelledby="positioned-demo-button"
                     placement="bottom-end"
                     style={{
