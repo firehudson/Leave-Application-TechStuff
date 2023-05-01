@@ -1,0 +1,90 @@
+[
+    {
+        "id": "1",
+        "RequesterName": "Shruti",
+        "LeaveDuration": "2",
+        "LeaveType": "Sick Leave",
+        "Department": "Tech",
+        "Reason": "I am suffering from fever since last 2 days.please grant me leave",
+        "RequestedOn": "24-07-2023",
+        "Status": "Pending",
+        "Color": "primary"
+    },
+    {
+        "id": "2",
+        "RequesterName": "Aditi",
+        "LeaveDuration": "3",
+        "LeaveType": "Casual Leave",
+        "Department": "Sales",
+        "Reason": "I am going on a vacation with my family to Rishikesh.please grant me leave",
+        "RequestedOn": "20-06-2023",
+        "Status": "Pending",
+        "Color": "primary"
+    },
+    {
+        "id": "3",
+        "RequesterName": "Lavina",
+        "LeaveDuration": "1",
+        "LeaveType": "Sick Leave",
+        "Department": "Tech",
+        "Reason": "i am suffering from fever.please grant me leave",
+        "RequestedOn": "09-07-2023",
+        "Status": "Pending",
+        "Color": "primary"
+    },
+    {
+        "id": "4",
+        "RequesterName": "Umang",
+        "LeaveDuration": "4",
+        "LeaveType": "Casual Leave",
+        "Department": "R&D",
+        "Reason": "I am going on a vacation with my family to Manali.please grant me leave",
+        "RequestedOn": "02-07-2023",
+        "Status": "Pending",
+        "Color": "primary"
+    },
+    {
+        "id": "5",
+        "RequesterName": "Chirag",
+        "LeaveDuration": "7",
+        "LeaveType": "Paternity Leave",
+        "Department": "HR",
+        "Reason": "We are expecting our 1st baby in the next Week(12-07-2023). Hence, I would like to take some time off.",
+        "RequestedOn": "04-07-2023",
+        "Status": "Pending",
+        "Color": "primary"
+    },
+    {
+        "id": "6",
+        "RequesterName": "Goutam",
+        "LeaveDuration": "2",
+        "LeaveType": "Sick Leave",
+        "Department": "Tech",
+        "Reason": "I am suffering from fever.please grant me leave",
+        "RequestedOn": "24-06-2023",
+        "Status": "Pending",
+        "Color": "primary"
+    },
+    {
+        "id": "7",
+        "RequesterName": "Sajal",
+        "LeaveDuration": "5",
+        "LeaveType": "Marriage Leave",
+        "Department": "Tech",
+        "Reason": "The reason for my leave is that I am getting married on 01-08-2023. I have made arrangements to complete all pending tasks and have delegated my responsibilities to Saif Khan. ",
+        "RequestedOn": "28-07-2023",
+        "Status": "Pending",
+        "Color": "primary"
+    },
+    {
+        "id": "8",
+        "RequesterName": "John",
+        "LeaveDuration": "1",
+        "LeaveType": "N/A",
+        "Department": "Tech",
+        "Reason": "No Reason",
+        "RequestedOn": "28-07-2023",
+        "Status": "Pending",
+        "Color": "primary"
+    }
+]
