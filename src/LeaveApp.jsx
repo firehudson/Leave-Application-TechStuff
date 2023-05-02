@@ -69,6 +69,7 @@ function LeaveApp() {
   const handleStatusChange = (status) => {
     empData.forEach((element) => {
       if (element.id === selectedId) {
+        element.UpdatedBy = "Manager";
         element.Status = status;
         if (status === "Approved") element.Color = "success";
         else element.Color = "danger";
@@ -81,7 +82,7 @@ function LeaveApp() {
     }));
     setReject((prevState) => ({
       ...prevState,
-      ["text"]: "Approve",
+      ["text"]: "Reject",
       ["variant"]: "plain",
     }));
   };
@@ -123,6 +124,7 @@ function LeaveApp() {
             <th align="center">Requested On</th>
             <th>Application Status</th>
             <th>Action</th>
+            <th>Updated By</th>
           </tr>
         </thead>
         <tbody>
@@ -218,6 +220,9 @@ function LeaveApp() {
                     </MenuItem>
                   </Menu>
                 </>
+              </td>
+              <td>
+              {employee.UpdatedBy}
               </td>
             </tr>
           ))}
