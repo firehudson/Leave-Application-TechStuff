@@ -124,7 +124,7 @@ function LeaveApp() {
             <th align="center">Requested On</th>
             <th>Application Status</th>
             <th>Action</th>
-            <th>Updated By</th>
+            <th>Approved/Rejected By</th>
           </tr>
         </thead>
         <tbody>
